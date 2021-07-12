@@ -1,0 +1,29 @@
+body {
+  padding: 0;
+  margin: 0; }
+  body header .barra {
+    text-align: center; }
+    body header .barra .icono {
+      float: right; }
+    body header .barra h1 {
+      font-size: 3em; }
+    body header .barra a {
+      font-size: 2em;
+      margin-top: 45px;
+      color: #0d0d0d; }
+  body header .menu {
+    list-style: none;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    text-align: center; }
+    body header .menu li {
+      display: inline-block; }
+    body header .menu a {
+      text-decoration: none;
+      color: black;
+      display: block;
+      padding-left: 1em;
+      font-size: 20px; }
+    body header .menu a:hover {
+      color: #595959; }
