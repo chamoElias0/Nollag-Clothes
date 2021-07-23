@@ -1,57 +1,51 @@
-// let cantPrenda = parseInt(prompt("ingrese cantidad de prendas que quiere comprar")) ;
-// let localization=prompt("ingrese su pais");
-// let cuota = prompt("desea sacar sus productos en cuotas ?")
-
-
-// function envio(){   
-//     if(cantPrenda > 10 && localization == "argentina"){
-//         alert("usted tiene envio gratis a cualquier parte del pais");  
-//     }
-//     else {
-//         alert("debera abonar el envio o pasarlo a buscar por la direccion que le aparezca en pantalla ");
-//         alert("direccion del local : calle falsa 123");
-//     }
-// }
-
-// function cuotas(){
-//     if(cuota == "si"){
-//         alert("puede sacar en 1 , 3 , 6 o 12 cuotas . elija entre las anteriores ")
-//         let eleccion = parseInt(prompt("en cuatas cuotas va a sacar los productos ?"));
-//         if(eleccion === 1){
-//             alert("tiene 1 cuota sin interes");
-//         }
-//         else if(eleccion == 3){
-//             alert("tiene un recargo del 10% del producto final");
-//         }
-//         else if(eleccion == 6){
-//             alert("tiene un recargo del 20% del producto final");
-//         }
-//         else {
-//             alert("tiene un recargo del 30% del producto final");
-//         }
-//     }  
-// }
-
-// envio(cantPrenda,localization);
-// cuotas(cuota);
-
-
-// -------------------- prendass personalizadas---------------
-
-class Personalizable{
-    constructor(tipo , talle ,color , envio ){
-        this.tipo = tipo;
-        this.talle =  talle;
-        this.color= color;
-        
-        
-    }
-    confirmar(){
-        console.log("La prenda que usted eligio es : " + " " + this.tipo + "." + " El talle elegido es : " + " " + this.talle + "." + " El color elegido es : " + "" + this.color + "." ); 
+//-------------------------------tp final -------------------
+class Producto {
+    constructor(tipo , talle , color ,cantidad, precio){
+        this.tipo = tipo ;
+        this.talle = talle; 
+        this.color = color ;
+        this.cantidad = cantidad ;
+        this.precio = precio; 
     }
 }
+//-------------------CARGA DE PRODUCTOS----------------------
+var ingresoProductos = [];
 
-let prenda1 = new Personalizable(prompt("Elija el tipo de prenda que desee"), prompt("Elija el talle que desee"),prompt("Elija el color que desee") );
-prenda1.confirmar();
-let prenda2 = new Personalizable(prompt("Elija el tipo de prenda que desee"), prompt("Elija el talle que desee"),prompt("Elija el color que desee") );
-prenda2.confirmar();
+do{
+    var condicion = prompt("si quiere seguir cargando productos , presione cualquier tecla o LISTO si desea terminar de cargar ");
+    if (condicion === "LISTO"){
+        alert("Usted termino de cargar los pructos");
+    break;
+    }else{
+        var tipoProducto = prompt("ingrese el tipo de producto ");
+        var talleProducto = prompt("ingrese el talle del producto");
+        var colorProducto = prompt("ingrese el color del producto");
+        var cantidadProducto = prompt("ingrese la cantidad del producto que tiene en stock");
+        var precioProducto = prompt("ingrese el precio del producto");
+        ingresoProductos.push(new Producto(tipoProducto , talleProducto , colorProducto ,cantidadProducto ,precioProducto));
+    }
+} 
+while(condicion != "LISTO");
+
+console.log(ingresoProductos);
+
+for(var producto of ingresoProductos){
+    document.write("<ul><li> Producto :"+ producto.tipo + "</li>");
+    document.write("<li> Talle :" + producto.talle  + "</li>");
+    document.write("<li> Color :" + producto.color  + "</li>");
+    document.write("<li> Color :" + producto.cantidad  + "</li>");
+    document.write("<li> Precio :" + producto.precio + "</ul>");
+}
+//-----------------------precio maximo------------------------
+document.write("Se muestran todas las prendas menor al precio colocado " );
+var precioMaximo = prompt("ingrese el precio maximo que desee pagar");
+var encontrado = ingresoProductos.filter(element => element.precio < precioMaximo);
+
+for(var productos of encontrado ){
+    document.write("<ul><li> Producto :"+ producto.tipo + "</li>");
+    document.write("<li> Talle :" + producto.talle  + "</li>");
+    document.write("<li> Color :" + producto.color  + "</li>");
+    document.write("<li> Color :" + producto.cantidad  + "</li>");
+    document.write("<li> Precio :" + producto.precio + "</ul>");
+}
+
