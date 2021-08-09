@@ -1,2 +1,25 @@
-@import '_variables','index';
+@import '_variables','index','footer','main','formularioAdmin','productos','carrito';
 
+body{
+    .dark-theme{
+        position: fixed;
+        z-index: 9999;
+        bottom: 1vh;
+        left: 1vw;
+        width: 4rem;
+        height:4rem;
+        border-radius:50%;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color:white;
+        color: cyan;
+        cursor: pointer;
+        outline:0;
+        border: 0;
+        transition:all .3 ease-in-out;
+    }
+    .dark-theme:hover{
+        background-color:rgb(40, 41, 41);
+        color: white;
+    }
+}
