@@ -20,19 +20,26 @@ if ("productos" in localStorage){
 // productos.push(new Producto(9,"Camperita","Unico" , "Gris" ,'../img/tricolor3.jfif', 2700));
 
 for(const producto of productos){
-    let div = document.createElement("div");
-    div.classList.add('tarjeta');
-    
-    div.innerHTML = `<hr>
-                    <h2 class ='tipo'>${producto.tipo}</h2>
-                    <h3 class ='tipo'>${producto.talle}</h3>
-                    <h3 class ='tipo'>${producto.color}</h3>
-                    <h3 class ='tipo'> ${producto.precio}</h3>
-                    <button id="${producto.id}" class="btnCompra">Anadir al Carrito</button>
-                    <hr>`;
-                    
-    document.getElementById("productosUI").appendChild(div);
+    const productList = document.getElementById('product-list');
+    const element = document.createElement('div');
+    element.innerHTML = `<div class= "card text-center mb-4">
+                                <div class= "card-body">
+                                    <strong>Tipo Producto</strong>: ${producto.tipo}
+                                    <br>
+                                    <strong>Talle Producto</strong>: ${producto.talle}
+                                    <br>
+                                    <strong>Color Producto</strong>: ${producto.color}
+                                    <br>
+                                    <strong>Precio Producto</strong>: ${producto.precio}
+                                    <button type="button" id="${producto.id}" name="delete" class="btnCompra btn-primary">Anadir al carrito</button>
 
+                                <a href="#" class = "btn btn-danger">Borrar</a>
+                        </div>
+                        `
+    productList.appendChild(element);
+    //  deleteProduct(){
+    //  };
+ 
 }
 
 const botones = document.getElementsByClassName('btnCompra');
@@ -41,35 +48,48 @@ console.log(botones);
 
 const carrito = [];
 
-function comprarManejador(e){
-    // console.log(e.target.id);
-    const seleccionado = productos.find( producto => producto.id == this.id);
-    carrito.push(seleccionado);
-    console.log(seleccionado);
-    localStorage.setItem('seleccionado' , JSON.stringify(carrito)); //nos habilita a guardar y usar en otra pantalla
-    const divCarrito =  document.getElementById('carrito')
-    divCarrito.innerHTML = "";
-    for (const producto of carrito) {
-        let item = document.createElement('p');
-        item.innerHTML = `<hr>
-                        Producto ${producto.tipo} 
-                        <br>
-                        Talle : ${producto.talle}
-                        <br>
-                        Color : ${producto.color}
-                        <br>
-                        Precio : ${producto.precio}
-                        <br>
-                        <hr>`
-        divCarrito.appendChild(item);
+// function comprarManejador(e){
+//     // console.log(e.target.id);
+//     const seleccionado = productos.find( producto => producto.id == this.id);
+//     carrito.push(seleccionado);
+//     console.log(seleccionado);
+//     localStorage.setItem('seleccionado' , JSON.stringify(carrito)); //nos habilita a guardar y usar en otra pantalla
+//     const divCarrito =  document.getElementById('carrito')
+//     divCarrito.innerHTML = "";
+//     for (const producto of carrito) {
+//         let item = document.createElement('p');
+//         item.innerHTML = `<div class="card" style="width: 18rem;">
+//         <div class="card-body">
+//           <h5 class="card-title">Tipo : ${producto.tipo} </h5>
+//           <h5 class="card-title">Talle : ${producto.talle} </h5>
+//           <h5 class="card-title">Color : ${producto.color} </h5>
+//           <h5 class="card-title">Precio : ${producto.precio} </h5>
+//         </div>
+//       </div>`
+//         divCarrito.appendChild(item);
+//     }
+
+// }
+
+// for (const boton of botones) {
+//     boton.addEventListener("click", comprarManejador);  
+// }
+
+
+
+// ----------------------agregue Jquery----------------------------------------------------------------
+
+function productosUIjQuery(productos , id){
+    for (const producto of productos) {
+        $(id).append(`<div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Tipo : ${producto.tipo} </h5>
+          <h5 class="card-title">Talle : ${producto.talle} </h5>
+          <h5 class="card-title">Color : ${producto.color} </h5>
+          <h5 class="card-title">Precio : ${producto.precio} </h5>
+        </div>
+      </div>`)
     }
-
 }
+productosUIjQuery(productos , "#carrito");
 
-for (const boton of botones) {
-    boton.addEventListener("click", comprarManejador);
-
-    // boton.onclick = function (){
-    //     console.log("respuesta 1");
-    // }
-}

@@ -31,12 +31,6 @@ body {
       font-size: 20px; }
     body header .menu a:hover {
       color: #595959; }
-  body #carrito {
-    background-color: black;
-    width: 100%;
-    color: white;
-    padding: 3px;
-    text-align: center; }
 
 body footer p {
   display: flex;
@@ -116,9 +110,7 @@ body #productosUI {
 
 body #carrito {
   width: 30%;
-  background-color: grey;
-  color: black;
-  border: 1px solid black; }
+  color: black; }
 
 body .dark-theme {
   position: fixed;
